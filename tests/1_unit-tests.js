@@ -7,6 +7,9 @@ suite('Unit Tests', () => {
     test('Mangoes are my favorite fruit.', (done) => {
       const input = "Mangoes are my favorite fruit."
       const output = "Mangoes are my favourite fruit."
+      const translation = Translator.translateAmericanToBritish(input)
+      assert.strictEqual(translation, output)
+      done()
     })
   })
 })
