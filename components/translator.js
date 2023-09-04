@@ -65,18 +65,26 @@ class Translator {
       const americanSubstitute = Translator.#highlightAndReplace(british, american)
       input = input.replace(britishCapture, americanSubstitute);
     }
+
     // spellings
     for (const [american, british] of Object.entries(americanToBritishSpelling)) {
       const britishCapture = new RegExp(`\\b${british}\\b`, "gi")
       const americanSubstitute = Translator.#highlightAndReplace(british, american)
       input = input.replace(britishCapture, americanSubstitute);
     }
+
     // titles
     for (const [american, british] of Object.entries(americanToBritishTitles)) {
       const britishCapture = new RegExp(`${british}\\b`, "gi")
       const americanSubstitute = Translator.#highlightAndReplace(british, american, false, true)
       input = input.replace(britishCapture, americanSubstitute);
     }
+
+    // convert dot time to colon time
+    const britishCapture = new RegExp(/(\d{1,2}).(\d{1,2})/, "gi")
+    isHighlighted ? input = input.replace(britishCapture, `<span class="highlight">$1:$2</span>`)
+    : input = input.replace(britishCapture, `$1:$2`);
+
     const tildeCapture = new RegExp(/~/, "gi")
     const strWithRemovedTilde = input.replace(tildeCapture, "");
     const nullCapture = new RegExp(/\0/,"gi")

@@ -139,5 +139,12 @@ suite('Unit Tests', () => {
       assert.strictEqual(translation, output)
       done()
     })
+    test("Tea time is usually around 4 or 4.30.", (done) => {
+      const input = "Tea time is usually around 4 or 4.30."
+      const output = "Tea time is usually around 4 or 4:30."
+      const translation = Translator.translateBritishToAmerican(input)
+      assert.strictEqual(translation, output)
+      done()
+    })
   })
 })
