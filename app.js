@@ -1,13 +1,12 @@
 import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser';
-import morgan from 'morgan';
+import logger from 'morgan';
 import * as url from 'url'
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
-import { indexRouter } from './routes/index';
+import { indexRouter } from './routes/index.js';
 import createHttpError from 'http-errors';
-import { apiRoutes } from './routes/api';
-const logger = morgan('combined')
+import { apiRoutes } from './routes/api.js';
 
 const app = express();
 
