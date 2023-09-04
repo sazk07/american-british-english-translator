@@ -71,6 +71,12 @@ class Translator {
       const americanSubstitute = Translator.#highlightAndReplace(british, american)
       input = input.replace(britishCapture, americanSubstitute);
     }
+    // titles
+    for (const [american, british] of Object.entries(americanToBritishTitles)) {
+      const britishCapture = new RegExp(`${british}\\b`, "gi")
+      const americanSubstitute = Translator.#highlightAndReplace(british, american, false, true)
+      input = input.replace(britishCapture, americanSubstitute);
+    }
     const tildeCapture = new RegExp(/~/, "gi")
     const strWithRemovedTilde = input.replace(tildeCapture, "");
     const nullCapture = new RegExp(/\0/,"gi")

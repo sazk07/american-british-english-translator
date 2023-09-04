@@ -111,5 +111,33 @@ suite('Unit Tests', () => {
       assert.strictEqual(translation, output)
       done()
     })
+    test("I've just got bits and bobs in my bum bag.", (done) => {
+      const input = "I've just got bits and bobs in my bum bag."
+      const output = "I've just got odds and ends in my fanny pack."
+      const translation = Translator.translateBritishToAmerican(input)
+      assert.strictEqual(translation, output)
+      done()
+    })
+    test("The car boot sale at Boxted Airfield was called off.", (done) => {
+      const input = "The car boot sale at Boxted Airfield was called off."
+      const output = "The swap meet at Boxted Airfield was called off."
+      const translation = Translator.translateBritishToAmerican(input)
+      assert.strictEqual(translation, output)
+      done()
+    })
+    test("Have you met Mrs Kalyani?", (done) => {
+      const input = "Have you met Mrs Kalyani?"
+      const output = "Have you met Mrs. Kalyani?"
+      const translation = Translator.translateBritishToAmerican(input)
+      assert.strictEqual(translation, output)
+      done()
+    })
+    test("Prof Joyner of King's College, London.", (done) => {
+      const input = "Prof Joyner of King's College, London."
+      const output = "Prof. Joyner of King's College, London."
+      const translation = Translator.translateBritishToAmerican(input)
+      assert.strictEqual(translation, output)
+      done()
+    })
   })
 })
