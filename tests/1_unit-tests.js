@@ -147,4 +147,34 @@ suite('Unit Tests', () => {
       done()
     })
   })
+  suite("Highlight translated text", () => {
+    test('Highlight "favourite" in "Mangoes are my favorite fruit." translation', (done) => {
+      const input = "Mangoes are my favorite fruit."
+      const translation = Translator.translateAmericanToBritish(input, true)
+      const output = 'Mangoes are my <span class="highlight">favourite</span> fruit.'
+      assert.strictEqual(translation, output)
+      done()
+    })
+    test('Highlight "yogurt" in "I ate yogurt for breakfast." translation', (done) => {
+      const input = "I ate yogurt for breakfast."
+      const translation = Translator.translateAmericanToBritish(input, true)
+      const output = 'I ate <span class="highlight">yoghurt</span> for breakfast.'
+      assert.strictEqual(translation, output)
+      done()
+    })
+    test('Highlight "footie" in "We watched the footie match for a while." translation', (done) => {
+      const input = 'We watched the footie match for a while.'
+      const translation = Translator.translateBritishToAmerican(input, true)
+      const output = 'We watched the <span class="highlight">soccer</span> match for a while.'
+      assert.strictEqual(translation, output)
+      done()
+    })
+    test('Highlight "Paracetamol" in "Paracetamol takes up to an hour to work." translation', (done) => {
+      const input = 'Paracetamol takes up to an hour to work.'
+      const translation = Translator.translateBritishToAmerican(input, true)
+      const output = '<span class="highlight">Tylenol</span> takes up to an hour to work.'
+      assert.strictEqual(translation, output)
+      done()
+    })
+  })
 })

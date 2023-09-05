@@ -32,69 +32,6 @@ suite('Functional Tests', () => {
           done()
         })
     })
-    test("I ate yogurt for breakfast", (done) => {
-      const text = "I ate yogurt for breakfast."
-      const locale = "american-to-british"
-      const output = {
-        text,
-        translation: 'I ate <span class="highlight">yoghurt</span> for breakfast.'
-      }
-      chai.request(app)
-        .post('/api/translate')
-        .send({ text, locale })
-        .end((err, res) => {
-          assert.notExists(err)
-          assert.strictEqual(res.status, 200)
-          assert.deepStrictEqual(res.body, output)
-          assert.property(res.body, "text")
-          assert.strictEqual(res.body.text, output.text)
-          assert.property(res.body, "translation")
-          assert.strictEqual(res.body.translation, output.translation)
-          done()
-        })
-    })
-    test("We watched the footie match for a while.", (done) => {
-      const text = "We watched the footie match for a while."
-      const locale = "british-to-american"
-      const output = {
-        text,
-        translation: 'We watched the <span class="highlight">soccer</span> match for a while.'
-      }
-      chai.request(app)
-        .post('/api/translate')
-        .send({ text, locale })
-        .end((err, res) => {
-          assert.notExists(err)
-          assert.strictEqual(res.status, 200)
-          assert.deepStrictEqual(res.body, output)
-          assert.property(res.body, "text")
-          assert.strictEqual(res.body.text, output.text)
-          assert.property(res.body, "translation")
-          assert.strictEqual(res.body.translation, output.translation)
-          done()
-        })
-    })
-    test("Paracetamol takes up to an hour to work.", (done) => {
-      const text = "Paracetamol takes up to an hour to work."
-      const locale = "british-to-american"
-      const output = {
-        text,
-        translation: '<span class="highlight">Tylenol</span> takes up to an hour to work.'
-      }
-      chai.request(app)
-        .post('/api/translate')
-        .send({ text, locale })
-        .end((err, res) => {
-          assert.notExists(err)
-          assert.strictEqual(res.status, 200)
-          assert.deepStrictEqual(res.body, output)
-          assert.property(res.body, "text")
-          assert.strictEqual(res.body.text, output.text)
-          assert.property(res.body, "translation")
-          assert.strictEqual(res.body.translation, output.translation)
-          done()
-        })
-    })
     test("POST with text and invalid locale field", (done) => {
       const text = "Mangoes are my favorite fruit."
       const locale = "Russian-to-spanish"
